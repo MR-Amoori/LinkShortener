@@ -1,0 +1,54 @@
+﻿@page
+@model CoverLandShop.Pages.Admin.ManageUsers.IndexModel
+
+@{
+    ViewData["Title"] = "خانه ادمین";
+}
+
+
+<p>
+    <a asp-page="Create" class="btn btn-success">افزودن کاربر</a>
+</p>
+<table class="table table-bordered table-borderless table-responsive-md">
+    <thead>
+        <tr>
+            <th class="border">
+                @Html.DisplayNameFor(model => model.Users[0].Email)
+            </th>
+            <th class="border">
+                @Html.DisplayNameFor(model => model.Users[0].Password)
+            </th>
+            <th class="border">
+                @Html.DisplayNameFor(model => model.Users[0].RegisterDate)
+            </th>
+            <th class="border">
+                @Html.DisplayNameFor(model => model.Users[0].IsAdmin)
+            </th>
+            <th class="border">
+                دستورات
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Users) {
+            <tr class="border">
+            <td class="border">
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td class="border">
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td class="border">
+                @item.RegisterDate.ToString("yyyy/MM/dd")
+            </td>
+            <td class="border">
+                @Html.DisplayFor(modelItem => item.IsAdmin)
+            </td>
+            <td class="border">
+                <a asp-page="./Edit" asp-route-id="@item.UserId" class="btn btn-warning">ویرایش</a> 
+                <a asp-page="./Delete" asp-route-id="@item.UserId" class="btn btn-danger">حذف</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

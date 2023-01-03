@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap-rtl.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+
+<body class="rtl">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> مینی لینک</a>
+                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+              <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">خانه</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="AboutUs">درباره ما</a>
+                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                                        <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Account" asp-action="Logout">خروج از حساب</a>
+                                    </li>
+                        }
+                        else
+                        {
+                                    <li class="nav-item">
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Account" asp-action="Login">ورود</a>
+                                </li>
+                        }
+                        @if (User.Identity.GetIsAdmin())
+                        {
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" href="/Admin/ManageUsers">مدیریت کاربران</a>
+                                </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+   <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class=" footer text-muted bg-dark ">
+        <img class="img-hidden-bottom d-none d-xl-block d-lg-block d-md-block" src="~/Images/colorline.jpg" alt="عکس هدر" />
+        <div class="container">
+            &copy; @DateTime.Now.ToString("yyyy") - مینی لینک - <a asp-area="" asp-controller="Home" asp-action="AboutUs">درباره ما</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

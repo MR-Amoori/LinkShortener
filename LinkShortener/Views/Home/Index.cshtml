@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ShortUrl>
+@{
+    ViewData["Title"] = "خانه";
+    int a = 1;
+}
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <div class="alert alert-info text-center">
+            <h1>
+            برای استفاده از خدمات سایت باید <strong><a asp-action="Login" asp-controller="Account">وارد</a></strong> شوید
+        </h1>
+    </div>
+}
+
+else
+{
+   <h6 class="text-primary">
+           <span class="text-info">نام کاربری: </span> @User.Identity.Name
+     <br />
+               <span class="text-info">ایمیل: </span> @User.Identity.GetEmail()
+         <br />
+            <span class="text-info">شماره موبایل: </span> @User.Identity.GetMobile()
+            <br />                       
+            <span class="text-info">تاریخ ثبت نام: </span> @User.Identity.GetRegisterdate()
+   </h6>
+
+   <div class="alert alert-secondary text-center">
+       <h3>
+           <a asp-action="GenerateLink" asp-controller="UrlShortener">
+               ساخت لینک کوتاه
+           </a>
+       </h3>
+   </div>
+    
+   <table class="table table-bordered table-borderless  table-responsive-md">
+              <thead>
+               <tr>
+                   <th class="border">ردیف</th>
+                   <th class="border">لینک کامل</th>
+                   <th class="border">لینک کوتاه</th>
+                   <th class="border">تاریخ ایجاد</th>
+                   <th class="border">بازدید</th>
+                   <th class="border">دستورات</th>
+               </tr>
+           </thead>
+       
+       @foreach (var item in Model)
+        {
+            
+
+           <tr class="border">
+               <td class="border">
+                 @a
+               </td>
+               <td class="border">
+                  <a href="@item.Link">
+                        @item.Link
+                  </a> 
+               </td>
+               <td class="border">
+                   <a href="@(ViewData["urlSite"]+item.ShortLink)">
+                        @(ViewData["urlSite"] + item.ShortLink)
+                  </a>
+               </td>
+               <td class="border">
+                   @item.CreateDate.ToString("yyyy/MM/dd")
+               </td>
+               <td class="border">
+                   @item.Visit
+               </td>
+               <td class="border">
+                   <a asp-action="Delete" asp-controller="Link" asp-route-id="@item.LinkId" class="btn btn-danger">حذف</a>
+                   <a asp-action="Update" asp-controller="Link" asp-route-id="@item.LinkId" class="btn btn-warning">ویرایش</a>
+               </td>
+           </tr>
+           a += 1;
+       }
+   </table>
+
+}
+

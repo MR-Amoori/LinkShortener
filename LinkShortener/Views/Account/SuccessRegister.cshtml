@@ -1,0 +1,14 @@
+﻿@model string
+@{
+    ViewData["Title"] = "ثبت نام موفق";
+}
+
+<div class="alert alert-success text-center">
+    <h1>
+        ثبت نام @Model با موفقیت ثبت شد .
+    </h1>
+
+    <p class="text-center">
+        <a class="btn btn-link btn-primary" asp-action="Login" asp-controller="Account">ورود به سایت</a>
+    </p>
+</div>
