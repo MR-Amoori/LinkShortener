@@ -50,5 +50,6 @@ namespace LinkShortener.Models
 
 
         public List<ShortUrl> ShortUrls { get; set; }
+        public List<Script> Scripts { get; set; }
     }
 }
