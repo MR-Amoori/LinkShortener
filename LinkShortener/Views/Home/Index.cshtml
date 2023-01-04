@@ -1,7 +1,8 @@
-﻿@model IEnumerable<ShortUrl>
+﻿@model IndexViewModel
 @{
     ViewData["Title"] = "خانه";
     int a = 1;
+    int b = 1;
 }
 
 @if (!User.Identity.IsAuthenticated)
@@ -10,6 +11,10 @@
             <h1>
             برای استفاده از خدمات سایت باید <strong><a asp-action="Login" asp-controller="Account">وارد</a></strong> شوید
         </h1>
+        <br>
+        <h4>
+                این سایت کوتاه کننده لینک است و <a href="https://mramoori.ir">برنامه نویس</a> آن هیچ تعهدی در قبال استفاده کاربران ندارد .
+        </h4>
     </div>
 }
 
@@ -53,7 +58,7 @@ else
                </tr>
            </thead>
        
-       @foreach (var item in Model)
+       @foreach (var item in Model.ShortUrls)
         {
             
 
@@ -85,6 +90,54 @@ else
            a += 1;
        }
    </table>
+
+   <hr />
+
+   <table class="table table-bordered table-borderless  table-responsive-md">
+              <thead>
+               <tr>
+                   <th class="border">ردیف</th>
+                   <th class="border">نام مشتری</th>
+                   <th class="border">لینک کوتاه</th>
+                   <th class="border">تاریخ ایجاد</th>
+                   <th class="border">بازدید</th>
+                   <th class="border">دستورات</th>
+               </tr>
+           </thead>
+       
+       @foreach (var item in Model.Scripts)
+        {
+            
+
+           <tr class="border">
+               <td class="border">
+                 @b
+               </td>
+               <td class="border">
+                  <a href="@item.Customer">
+                        @item.Customer
+                  </a> 
+               </td>
+               <td class="border">
+                   <a href="@(ViewData["urlSite"]+item.ShortLink)">
+                        @(ViewData["urlSite"] + item.ShortLink)
+                  </a>
+               </td>
+               <td class="border">
+                   @item.CreateDate.ToString("yyyy/MM/dd")
+               </td>
+               <td class="border">
+                   @item.Visit
+               </td>
+               <td class="border">
+                   <a asp-action="Delete" asp-controller="Link" asp-route-id="@item.Customer" class="btn btn-danger">حذف</a>
+                   <a asp-action="Update" asp-controller="Link" asp-route-id="@item.Customer" class="btn btn-warning">ویرایش</a>
+               </td>
+           </tr>
+           b += 1;
+       }
+   </table>
+
 
 }
 

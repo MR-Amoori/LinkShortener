@@ -15,6 +15,10 @@ namespace LinkShortener.Models
         [Display(Name = "اسکریپت")]
         public string script { get; set; }
 
+        [Required(ErrorMessage = "وارد کردن {0} اجباری است")]
+        [Display(Name = "مشتری")]
+        public string Customer { get; set; }
+
         public string ShortLink { get; set; }
 
         public int Visit { get; set; }

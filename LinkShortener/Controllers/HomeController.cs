@@ -26,8 +26,15 @@ namespace LinkShortener.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 var userId = _context.User.FirstOrDefault(u => u.UserName == User.Identity.Name).UserId;
-                var urls = _context.ShortUrl.Include(u => u.User).Where(u => u.UserId == userId);
-                return View(urls);
+                var urls = _context.ShortUrl.Include(u => u.User).Where(u => u.UserId == userId).ToList();
+                var scripts = _context.Scripts.Include(x => x.User).Where(x => x.UserId == userId).ToList(); ;
+                IndexViewModel viewModel = new IndexViewModel()
+                {
+                    Scripts = scripts,
+                    ShortUrls = urls
+                };
+
+                return View(viewModel);
             }
             else
             {
