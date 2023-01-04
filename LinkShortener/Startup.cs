@@ -26,9 +26,8 @@ namespace LinkShortener
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            // services.AddDbContext<LinkShortenerContext>(options => options.UseSqlServer("Data Source = . ; Initial Catalog = LinkShortener_DB ; Integrated Security = true"));
-
-            services.AddDbContext<LinkShortenerContext>(options => options.UseSqlServer(@"Data Source=5.160.247.50\MSSQLSERVER2014;Initial Catalog=LinkShortener_DB;User Id=mohamadreza;Password=mohamad@021_; MultipleActiveResultSets=true"));
+            //services.AddDbContext<LinkShortenerContext>(options => options.UseSqlServer(@"Data Source=.\MSSQLSERVER2019;Initial Catalog=LinkShortener_DB;User Id=mohamadreza;Password=mohamad@021_; MultipleActiveResultSets=true"));
+            services.AddDbContext<LinkShortenerContext>(options => options.UseSqlServer(@"Data Source=.;Initial Catalog=CoverLandLinkShortener_DB;Integrated Security=True; MultipleActiveResultSets=true"));
 
             #region IoC
 

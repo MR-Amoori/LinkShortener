@@ -13,6 +13,7 @@ namespace LinkShortener.Data
 
         public DbSet<User> User { get; set; }
         public DbSet<ShortUrl> ShortUrl { get; set; }
+        public DbSet<Script> Scripts { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
