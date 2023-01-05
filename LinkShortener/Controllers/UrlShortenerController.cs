@@ -64,7 +64,7 @@ namespace LinkShortener.Controllers
                 CreateDate = DateTime.Now,
                 Visit = 0,
                 UserId = user.UserId,
-                ShortLink = $"c/{value}",
+                ShortLink = $"u/{value}",
                 User = user
             };
 
@@ -78,13 +78,13 @@ namespace LinkShortener.Controllers
 
 
 
-        [Route("c/{id?}")]
+        [Route("u/{id?}")]
         public IActionResult ActionLink(int id)
         {
-            var url = _context.ShortUrl.FirstOrDefault(u => u.ShortLink == $"c/{id}");
+            var url = _context.ShortUrl.FirstOrDefault(u => u.ShortLink == $"u/{id}");
             if (url != null)
             {
-                _context.ShortUrl.FirstOrDefault(u => u.ShortLink == $"c/{id}").Visit += 1;
+                _context.ShortUrl.FirstOrDefault(u => u.ShortLink == $"u/{id}").Visit += 1;
                 _context.SaveChanges();
                 return Redirect(url.Link);
             }

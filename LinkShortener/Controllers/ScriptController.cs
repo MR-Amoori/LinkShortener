@@ -71,7 +71,7 @@ namespace LinkShortener.Controllers
                 ExpireDate = model.ExpireDate,
                 Visit = 0,
                 UserId = user.UserId,
-                ShortLink = $"c/{value}",
+                ShortLink = $"s/{value}",
                 User = user
             };
 
