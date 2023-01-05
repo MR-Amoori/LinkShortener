@@ -1,5 +1,6 @@
 ﻿using LinkShortener.Data;
 using LinkShortener.Models;
+using LinkShortener.Utility;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
@@ -42,7 +43,7 @@ namespace LinkShortener.Controllers
 
             while (true)
             {
-                value = randomNumbe();
+                value = RandomGenerator.randomNumbe();
 
                 var urlIds = _context.ShortUrl.Any(u => u.LinkId == value);
 
@@ -76,11 +77,6 @@ namespace LinkShortener.Controllers
         }
 
 
-        private int randomNumbe()
-        {
-            Random random = new Random();
-            return random.Next(0, 5000);
-        }
 
         [Route("c/{id?}")]
         public IActionResult ActionLink(int id)
