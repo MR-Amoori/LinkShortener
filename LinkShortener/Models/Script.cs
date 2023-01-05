@@ -26,9 +26,7 @@ namespace LinkShortener.Models
         [Required]
         public DateTime CreateDate { get; set; }
 
-        [Display(Name = "تاریخ انقضا")]
-        public DateTime ExpireDate { get; set; }
-
+        // افزودن فعال یا غیر فعال
 
         public User User { get; set; }
 

@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Globalization;
 using System.Security.Claims;
 
 namespace LinkShortener
@@ -23,6 +24,7 @@ namespace LinkShortener
 
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddControllersWithViews();
             services.AddRazorPages();
 

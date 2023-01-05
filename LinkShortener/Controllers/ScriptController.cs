@@ -26,12 +26,12 @@ namespace LinkShortener.Controllers
         [HttpPost]
         public IActionResult AddScript(Script model)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            if (_context.Scripts.Any(c=>c.Customer == model.Customer))
+            if (_context.Scripts.Any(c => c.Customer == model.Customer))
             {
                 ModelState.AddModelError("", "مشتری ثبت شده قبلا وجود داشته است");
                 return View(model);
@@ -66,7 +66,7 @@ namespace LinkShortener.Controllers
             Script script = new Script()
             {
                 script = model.script,
-                Customer = model.Customer, 
+                Customer = model.Customer,
                 CreateDate = DateTime.Now,
                 ExpireDate = model.ExpireDate,
                 Visit = 0,
@@ -79,7 +79,36 @@ namespace LinkShortener.Controllers
             _context.Scripts.Add(script);
             _context.SaveChanges();
 
-            return RedirectToAction("index","home");
+            return RedirectToAction("index", "home");
         }
+
+
+        public IActionResult UpdateScript(int id)
+        {
+            var script = _context.Scripts.FirstOrDefault(x => x.ScriptId == id);
+            return View(script);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateScript(Script scriptt)
+        {
+            if (_context.Scripts.Any(x=>x.Customer == scriptt.Customer))
+            {
+                return View(scriptt);
+            }
+
+            var target= _context.Scripts.FirstOrDefault(c=>c.ScriptId == scriptt.ScriptId);
+
+            target.Customer = scriptt.Customer;
+            target.script = scriptt.script;
+
+
+            _context.Scripts.Update(target);
+            _context.SaveChanges();
+            
+
+            return RedirectToAction("Index","Home");
+        }
+
     }
 }

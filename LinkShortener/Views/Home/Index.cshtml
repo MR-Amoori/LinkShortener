@@ -105,8 +105,8 @@ else
                    @item.Visit
                </td>
                <td class="border">
-                   <a asp-action="Delete" asp-controller="Link" asp-route-id="@item.Customer" class="btn btn-danger">حذف</a>
-                   <a asp-action="Update" asp-controller="Link" asp-route-id="@item.Customer" class="btn btn-warning">ویرایش</a>
+                   <a asp-action="Delete" asp-controller="Link" asp-route-id="@item.ScriptId" class="btn btn-danger">حذف</a>
+                   <a asp-action="UpdateScript" asp-controller="Script" asp-route-id="@item.ScriptId" class="btn btn-warning">ویرایش</a>
                </td>
            </tr>
            b += 1;
