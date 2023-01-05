@@ -11,9 +11,8 @@ namespace LinkShortener.Models
         public int UserId { get; set; }
 
         [Required(ErrorMessage = "وارد کردن نام کاربری الزامی است")]
-        [DisplayName("نام کاربری (فارسی)")]
+        [DisplayName("نام کاربری")]
         [MaxLength(100, ErrorMessage = "نام کاربری نمی تواند بیشتر از 50 کاراکتر باشد")]
-        [RegularExpression(pattern: @"^[\u0600-\u06FF]+$", ErrorMessage = "نام کاربری فارسی وارد شود")]
         public string UserName { get; set; }
 
 
@@ -26,10 +25,9 @@ namespace LinkShortener.Models
 
 
         [Required(ErrorMessage = "وارد کردن رمز عبور الزامی است")]
-        [MaxLength(12, ErrorMessage = "رمز عبور نمی تواند بیشتر از 12 کاراکتر باشد")]
+        [MaxLength(15, ErrorMessage = "رمز عبور نمی تواند بیشتر از 15 کاراکتر باشد")]
         [MinLength(5, ErrorMessage = "رمز عبور نمی تواند کمتر از 5 کاراکتر باشد")]
         [DisplayName("رمز عبور")]
-        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,20}$", ErrorMessage = "کلمه عبور باید شامل حرف و عدد باشد")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

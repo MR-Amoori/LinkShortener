@@ -37,7 +37,7 @@ namespace LinkShortener.Controllers
             {
                 //  return Content(content: $"ثبت نام کرده است '{register.Email}' قبلا ایمیل");
 
-                ModelState.AddModelError("Email", "ایمیل وارد شده قبلا ثبت نام کرده است");
+                ModelState.AddModelError("Email", "ایمیل وارد شده قبلا ثبت نام کرده است، برای بازنشانی رمز عبور با پشتیبانی در ارتباط باشید.");
                 return View(register);
             }
 
@@ -45,7 +45,7 @@ namespace LinkShortener.Controllers
             {
                 //  return Content(content: $"ثبت نام کرده است '{register.Email}' قبلا ایمیل");
 
-                ModelState.AddModelError("UserName", "نام کاربری وارد شده قبلا ثبت نام کرده است");
+                ModelState.AddModelError("UserName", "نام کاربری وارد شده قبلا ثبت نام کرده است، لطفا نام دیگری انتخاب کنید");
                 return View(register);
             }
 
