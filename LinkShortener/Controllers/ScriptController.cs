@@ -58,12 +58,17 @@ namespace LinkShortener.Controllers
                 }
             }
 
+            if (model.ExpireDate == null)
+            {
+                model.ExpireDate = DateTime.Now;
+            }
 
             Script script = new Script()
             {
                 script = model.script,
                 Customer = model.Customer, 
                 CreateDate = DateTime.Now,
+                ExpireDate = model.ExpireDate,
                 Visit = 0,
                 UserId = user.UserId,
                 ShortLink = $"c/{value}",

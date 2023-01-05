@@ -98,7 +98,7 @@ else
                <tr>
                    <th class="border">ردیف</th>
                    <th class="border">نام مشتری</th>
-                   <th class="border">لینک کوتاه</th>
+                   <th class="border">لینک اسکریپت</th>
                    <th class="border">تاریخ ایجاد</th>
                    <th class="border">بازدید</th>
                    <th class="border">دستورات</th>
@@ -114,9 +114,9 @@ else
                  @b
                </td>
                <td class="border">
-                  <a href="@item.Customer">
+                  <p>
                         @item.Customer
-                  </a> 
+                  </p> 
                </td>
                <td class="border">
                    <a href="@(ViewData["urlSite"]+item.ShortLink)">
