@@ -58,7 +58,7 @@ namespace LinkShortener.Controllers
                 }
             }
 
-           
+
             Script script = new Script()
             {
                 script = model.script,
@@ -88,24 +88,30 @@ namespace LinkShortener.Controllers
         [HttpPost]
         public IActionResult UpdateScript(Script scriptt)
         {
-            if (_context.Scripts.Any(x=>x.Customer == scriptt.Customer))
-            {
-                return View(scriptt);
-            }
+            var target = _context.Scripts.FirstOrDefault(c => c.ScriptId == scriptt.ScriptId);
 
-            var target= _context.Scripts.FirstOrDefault(c=>c.ScriptId == scriptt.ScriptId);
+            if (_context.Scripts.Any(x => x.Customer == scriptt.Customer))
+            {
+                if (target.Customer == scriptt.Customer)
+                {
+
+                }
+                else
+                {
+                    return View(scriptt);
+                }
+            }
 
             target.Customer = scriptt.Customer;
             target.script = scriptt.script;
             target.IsActive = scriptt.IsActive;
 
-
             _context.Scripts.Update(target);
             _context.SaveChanges();
-            
 
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
+
 
     }
 }
