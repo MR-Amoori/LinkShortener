@@ -46,6 +46,9 @@ namespace LinkShortener.Models
         [DisplayName("ادمین")]
         public bool IsAdmin { get; set; }
 
+        [Display(Name ="فعال")]
+        public bool IsActive { get; set; }
+
 
         public List<ShortUrl> ShortUrls { get; set; }
         public List<Script> Scripts { get; set; }
