@@ -128,5 +128,24 @@ namespace LinkShortener.Controllers
            return RedirectToAction("Index", "Home");
         }
 
+
+
+        [Route("s/{id?}")]
+        public string ActionScript(int id)
+        {
+            var script = _context.Scripts.FirstOrDefault(s => s.ShortLink == $"s/{id}");
+            if (script != null)
+            {
+                if (script.IsActive)
+                {
+                    _context.Scripts.FirstOrDefault(s => s.ShortLink == $"s/{id}").Visit += 1;
+                    _context.SaveChanges();
+                    return script.script;
+                }
+            }
+
+            return "Error 404";
+        }
+
     }
 }
