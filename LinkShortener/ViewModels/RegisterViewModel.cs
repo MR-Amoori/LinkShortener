@@ -9,15 +9,14 @@ namespace LinkShortener.ViewModels
         public int UserId { get; set; }
 
         [Required(ErrorMessage = "وارد کردن نام کاربری الزامی است")]
-        [DisplayName("نام کاربری (فارسی)")]
-        [MaxLength(100, ErrorMessage = "نام کاربری نمی تواند بیشتر از 50 کاراکتر باشد")]
-        [RegularExpression(pattern: @"^[\u0600-\u06FF]+$", ErrorMessage = "نام کاربری فارسی وارد شود")]
+        [DisplayName("نام کاربری")]
+        [MaxLength(100, ErrorMessage = "نام کاربری نمی تواند بیشتر از 100 کاراکتر باشد")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "وارد کردن ایمیل الزامی است")]
         [DisplayName("ایمیل")]
-        [MaxLength(100, ErrorMessage = "ایمیل نمی تواند بیشتر از 50 کاراکتر باشد")]
-        [EmailAddress(ErrorMessage = "فرمت ایمیل اشتباه است")]
+        [MaxLength(100, ErrorMessage = "ایمیل نمی تواند بیشتر از 100 کاراکتر باشد")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "فرمت ایمیل اشتباه است")]
         public string Email { get; set; }
 
 
@@ -25,7 +24,6 @@ namespace LinkShortener.ViewModels
         [MaxLength(12, ErrorMessage = "رمز عبور نمی تواند بیشتر از 12 کاراکتر باشد")]
         [MinLength(5, ErrorMessage = "رمز عبور نمی تواند کمتر از 5 کاراکتر باشد")]
         [DisplayName("رمز عبور")]
-        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,20}$", ErrorMessage = "کلمه عبور باید شامل حرف و عدد باشد")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
@@ -34,7 +32,7 @@ namespace LinkShortener.ViewModels
         [MinLength(5, ErrorMessage = "رمز عبور نمی تواند کمتر از 5 کاراکتر باشد")]
         [DisplayName("تکرار رمز عبور")]
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "با رمز عبور وارد شده برابر نیست")]
+        [Compare(nameof(Password), ErrorMessage = "با رمز عبور وارد شده برابر نیست")]
         public string RePassword { get; set; }
 
         [Required(ErrorMessage = "وارد کردن شماره موبایل الزامی است")]

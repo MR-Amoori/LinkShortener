@@ -12,13 +12,13 @@ namespace LinkShortener.Models
 
         [Required(ErrorMessage = "وارد کردن نام کاربری الزامی است")]
         [DisplayName("نام کاربری")]
-        [MaxLength(100, ErrorMessage = "نام کاربری نمی تواند بیشتر از 50 کاراکتر باشد")]
+        [MaxLength(100, ErrorMessage = "نام کاربری نمی تواند بیشتر از 100 کاراکتر باشد")]
         public string UserName { get; set; }
 
 
         [Required(ErrorMessage = "وارد کردن ایمیل الزامی است")]
         [DisplayName("ایمیل")]
-        [MaxLength(100, ErrorMessage = "ایمیل نمی تواند بیشتر از 50 کاراکتر باشد")]
+        [MaxLength(100, ErrorMessage = "ایمیل نمی تواند بیشتر از 100 کاراکتر باشد")]
         [EmailAddress]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
@@ -37,11 +37,6 @@ namespace LinkShortener.Models
         [MinLength(11, ErrorMessage = "شماره موبایل نمی تواند کمتر از 11 کاراکتر باشد")]
         [DataType(DataType.PhoneNumber)]
         public string NumberPhone { get; set; }
-
-        [Required]
-        [DataType(DataType.DateTime)]
-        [DisplayName("تاریخ ثبت نام")]
-        public DateTime RegisterDate { get; set; }
 
         [DisplayName("ادمین")]
         public bool IsAdmin { get; set; }

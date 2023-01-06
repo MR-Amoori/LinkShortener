@@ -19,10 +19,10 @@
                 @Html.DisplayNameFor(model => model.Users[0].Password)
             </th>
             <th class="border">
-                @Html.DisplayNameFor(model => model.Users[0].RegisterDate)
+                @Html.DisplayNameFor(model => model.Users[0].IsAdmin)
             </th>
             <th class="border">
-                @Html.DisplayNameFor(model => model.Users[0].IsAdmin)
+                @Html.DisplayNameFor(model => model.Users[0].IsActive)
             </th>
             <th class="border">
                 دستورات
@@ -39,10 +39,10 @@
                 @Html.DisplayFor(modelItem => item.Password)
             </td>
             <td class="border">
-                @item.RegisterDate.ToString("yyyy/MM/dd")
+                @Html.DisplayFor(modelItem => item.IsAdmin)
             </td>
             <td class="border">
-                @Html.DisplayFor(modelItem => item.IsAdmin)
+                @Html.DisplayFor(modelItem => item.IsActive)
             </td>
             <td class="border">
                 <a asp-page="./Edit" asp-route-id="@item.UserId" class="btn btn-warning">ویرایش</a> 

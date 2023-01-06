@@ -28,7 +28,6 @@ namespace LinkShortener.Data
                     IsAdmin = true,
                     NumberPhone = "09035170373",
                     Password = "mohamad021",
-                    RegisterDate = System.DateTime.Now,
                     UserName = "محمدرضاعموری",
                     IsActive = true
                 });

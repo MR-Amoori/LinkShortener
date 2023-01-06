@@ -30,7 +30,6 @@ namespace CoverLandShop.Pages.Admin.ManageUsers
             {
                 return Page();
             }
-            Users.RegisterDate = System.DateTime.Now;
             _context.User.Add(Users);
             await _context.SaveChangesAsync();
 

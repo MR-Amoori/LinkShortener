@@ -57,7 +57,6 @@ namespace LinkShortener.Controllers
                     Email = register.Email.ToLower(),
                     Password = register.Password,
                     IsAdmin = false,
-                    RegisterDate = System.DateTime.Now,
                     NumberPhone = register.NumberPhone,
                     UserName = register.UserName.ToLower(),
                     IsActive = false
@@ -111,7 +110,6 @@ namespace LinkShortener.Controllers
                 new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.MobilePhone, user.NumberPhone),
-                new Claim(type: "Registerdate", user.RegisterDate.ToString(format: "yyyy/MM/dd")),
                 new Claim(type: "IsAdmin", user.IsAdmin.ToString())
             };
 
