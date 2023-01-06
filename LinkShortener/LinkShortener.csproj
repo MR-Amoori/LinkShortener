@@ -5,9 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Publish V1\**" />
     <Compile Remove="Publish\**" />
+    <Content Remove="Publish V1\**" />
     <Content Remove="Publish\**" />
+    <EmbeddedResource Remove="Publish V1\**" />
     <EmbeddedResource Remove="Publish\**" />
+    <None Remove="Publish V1\**" />
     <None Remove="Publish\**" />
   </ItemGroup>
 
