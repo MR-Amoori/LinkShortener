@@ -26,7 +26,8 @@ namespace LinkShortener.Models
         [Required]
         public DateTime CreateDate { get; set; }
 
-        // افزودن فعال یا غیر فعال
+        [Display(Name = "فعال باشد؟")]
+        public bool IsActive { get; set; }
 
         public User User { get; set; }
 

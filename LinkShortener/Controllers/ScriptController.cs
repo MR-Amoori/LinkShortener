@@ -58,17 +58,13 @@ namespace LinkShortener.Controllers
                 }
             }
 
-            if (model.ExpireDate == null)
-            {
-                model.ExpireDate = DateTime.Now;
-            }
-
+           
             Script script = new Script()
             {
                 script = model.script,
                 Customer = model.Customer,
                 CreateDate = DateTime.Now,
-                ExpireDate = model.ExpireDate,
+                IsActive = model.IsActive,
                 Visit = 0,
                 UserId = user.UserId,
                 ShortLink = $"s/{value}",
@@ -101,6 +97,7 @@ namespace LinkShortener.Controllers
 
             target.Customer = scriptt.Customer;
             target.script = scriptt.script;
+            target.IsActive = scriptt.IsActive;
 
 
             _context.Scripts.Update(target);

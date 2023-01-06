@@ -60,7 +60,7 @@ else
                    <th class="border">نام مشتری</th>
                    <th class="border">لینک اسکریپت</th>
                    <th class="border">تاریخ ایجاد</th>
-                   <th class="border">تاریخ انقضا</th>
+                   <th class="border">وضعیت</th>
                    <th class="border">آپدیت</th>
                    <th class="border">دستورات</th>
                </tr>
@@ -75,11 +75,10 @@ else
                  @b
                </td>
                <td class="border">
-                  @if (item.CreateDate >= item.ExpireDate)
+                  @if (!item.IsActive)
                     {
                    <p class="alert alert-danger">
                         @item.Customer 
-                        (منقضی شده است)
                   </p> 
                  
                     }
@@ -99,7 +98,14 @@ else
                    @item.CreateDate.ToString("yyyy/MM/dd")
                </td>
                <td class="border">
-                   @item.ExpireDate.ToString("yyyy/MM/dd")
+                 @if (item.IsActive)
+                    {
+                        <p>فعال</p>
+                    }
+                    else
+                    {
+                        <p class="text-danger">غیر فعال</p>
+                    }
                </td>
                <td class="border">
                    @item.Visit
