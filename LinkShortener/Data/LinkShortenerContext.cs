@@ -29,7 +29,8 @@ namespace LinkShortener.Data
                     NumberPhone = "09035170373",
                     Password = "mohamad021",
                     RegisterDate = System.DateTime.Now,
-                    UserName = "محمدرضاعموری"
+                    UserName = "محمدرضاعموری",
+                    IsActive = true
                 });
 
             base.OnModelCreating(modelBuilder);

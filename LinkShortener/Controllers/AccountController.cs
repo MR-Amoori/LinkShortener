@@ -60,6 +60,7 @@ namespace LinkShortener.Controllers
                     RegisterDate = System.DateTime.Now,
                     NumberPhone = register.NumberPhone,
                     UserName = register.UserName.ToLower(),
+                    IsActive = false
                 };
 
                 _context.User.Add(user);
@@ -94,6 +95,12 @@ namespace LinkShortener.Controllers
             if (user == null)
             {
                 ModelState.AddModelError("Email", "اطلاعات صحیح نیست");
+                return View(login);
+            }
+
+            if(!user.IsActive)
+            {
+                ModelState.AddModelError("", "حساب شما تایید نشده است، با پشتیبانی در تماس باشید.");
                 return View(login);
             }
 
