@@ -113,5 +113,20 @@ namespace LinkShortener.Controllers
         }
 
 
+        public IActionResult DeleteScript(int id)
+        {
+            var script = _context.Scripts.FirstOrDefault(x => x.ScriptId == id);
+            return View(script);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteScript(string id)
+        {
+            var script = _context.Scripts.Find(int.Parse(id));
+            _context.Scripts.Remove(script);
+            _context.SaveChanges();
+           return RedirectToAction("Index", "Home");
+        }
+
     }
 }
