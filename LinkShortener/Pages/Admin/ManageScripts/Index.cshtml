@@ -20,9 +20,6 @@
             <th class="border">
                 @Html.DisplayNameFor(model => model.Scripts[0].IsActive)
             </th>
-            <th class="border">
-                دستورات
-            </th>
         </tr>
     </thead>
     <tbody>
@@ -40,10 +37,6 @@
                 </td>
                 <td class="border">
                     @Html.DisplayFor(modelItem => item.IsActive)
-                </td>
-                <td class="border">
-                    <a asp-page="./Edit" asp-route-id="@item.UserId" class="btn btn-warning">ویرایش</a> 
-                    <a asp-page="./Delete" asp-route-id="@item.UserId" class="btn btn-danger">حذف</a>
                 </td>
             </tr>
         }
