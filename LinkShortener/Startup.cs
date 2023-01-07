@@ -28,8 +28,8 @@ namespace LinkShortener
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            services.AddDbContext<LinkShortenerContext>(options => options.UseSqlServer(@"Data Source=.;Initial Catalog=kalamar1_minilink_DB;Integrated Security=True; MultipleActiveResultSets=true"));
-            //services.AddDbContext<LinkShortenerContext>(options => options.UseSqlServer(@"Data Source=.\MSSQLSERVER2019;Initial Catalog=kalamar1_minilink_DB;User Id=kalamar1_minilink_us;password=Mohamad_021 ;MultipleActiveResultSets=true"));
+            //services.AddDbContext<LinkShortenerContext>(options => options.UseSqlServer(@"Data Source=.;Initial Catalog=kalamar1_minilink_DB;Integrated Security=True; MultipleActiveResultSets=true"));
+            services.AddDbContext<LinkShortenerContext>(options => options.UseSqlServer(@"Data Source=.\MSSQLSERVER2019;Initial Catalog=kalamar1_minilink_DB;User Id=kalamar1_minilink_us;password=Mohamad_021 ;MultipleActiveResultSets=true"));
 
             #region IoC
 
