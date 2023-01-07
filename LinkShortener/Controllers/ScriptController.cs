@@ -68,6 +68,7 @@ namespace LinkShortener.Controllers
                 Visit = 0,
                 UserId = user.UserId,
                 ShortLink = $"s/{value}",
+                NumberPhone = model.NumberPhone,
                 User = user
             };
 
@@ -103,6 +104,7 @@ namespace LinkShortener.Controllers
             }
 
             target.Customer = scriptt.Customer;
+            target.NumberPhone = scriptt.NumberPhone;
             target.script = scriptt.script;
             target.IsActive = scriptt.IsActive;
 
@@ -144,7 +146,7 @@ namespace LinkShortener.Controllers
                 }
             }
 
-            return "Error 404";
+            return "vmess://eyJhZGQiOiJOb3RGb3VuZCIsImFpZCI6IjAiLCJob3N0IjoiIiwiaWQiOiI4Y2E3YWJlNS1hNjFjLTQzNDItZGM5MC05NjhiYmQ5NzE4MmEiLCJuZXQiOiJ3cyIsInBhdGgiOiIvIiwicG9ydCI6Ijk5OTk5IiwicHMiOiLYrdiz2KfYqCDYtNmF2Kcg2LrbjNixINmB2LnYp9mEINin2LPYqiIsInNjeSI6ImF1dG8iLCJzbmkiOiIiLCJ0bHMiOiJ0bHMiLCJ0eXBlIjoiIiwidiI6IjIifQ==";
         }
 
     }

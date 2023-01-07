@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace LinkShortener.Models
@@ -18,6 +19,12 @@ namespace LinkShortener.Models
         [Required(ErrorMessage = "وارد کردن {0} اجباری است")]
         [Display(Name = "نام")]
         public string Customer { get; set; }
+
+        [DisplayName("شماره موبایل")]
+        [MaxLength(11, ErrorMessage = "شماره موبایل نمی تواند بیشتر از 11 کاراکتر باشد")]
+        [MinLength(11, ErrorMessage = "شماره موبایل نمی تواند کمتر از 11 کاراکتر باشد")]
+        [DataType(DataType.PhoneNumber)]
+        public string NumberPhone { get; set; }
 
         public string ShortLink { get; set; }
 

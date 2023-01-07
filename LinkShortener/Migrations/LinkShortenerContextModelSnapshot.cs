@@ -36,6 +36,10 @@ namespace LinkShortener.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<string>("NumberPhone")
+                        .HasColumnType("nvarchar(11)")
+                        .HasMaxLength(11);
+
                     b.Property<string>("ShortLink")
                         .HasColumnType("nvarchar(max)");
 

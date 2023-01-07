@@ -12,14 +12,19 @@
         <form asp-action="AddScript" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="script" class="control-label"></label>
-                <textarea rows="5" asp-for="script" class="form-control"></textarea>
-                <span asp-validation-for="script" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Customer" class="control-label"></label>
                 <input asp-for="Customer" class="form-control" />
                 <span asp-validation-for="Customer" class="text-danger"></span>
+            </div>
+              <div class="form-group">
+                <label asp-for="NumberPhone" class="control-label"></label>
+                <input asp-for="NumberPhone" class="form-control" />
+                <span asp-validation-for="NumberPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="script" class="control-label"></label>
+                <textarea rows="5" asp-for="script" class="form-control"></textarea>
+                <span asp-validation-for="script" class="text-danger"></span>
             </div>
              <div class="form-group">
                 <label asp-for="IsActive" class="control-label"></label>
