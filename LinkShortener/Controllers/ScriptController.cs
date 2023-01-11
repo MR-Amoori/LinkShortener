@@ -107,6 +107,7 @@ namespace LinkShortener.Controllers
             target.NumberPhone = scriptt.NumberPhone;
             target.script = scriptt.script;
             target.IsActive = scriptt.IsActive;
+            target.CreateDate = scriptt.CreateDate;
 
             _context.Scripts.Update(target);
             _context.SaveChanges();
