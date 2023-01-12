@@ -13,6 +13,7 @@
         <form asp-action="UpdateScript" asp-controller="Script" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ScriptId" />
+            <input type="hidden" asp-for="Visit" />
             <div class="form-group">
                 <label asp-for="Customer" class="control-label"></label>
                 <input asp-for="Customer" class="form-control" />

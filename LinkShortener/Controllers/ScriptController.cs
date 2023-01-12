@@ -108,6 +108,7 @@ namespace LinkShortener.Controllers
             target.script = scriptt.script;
             target.IsActive = scriptt.IsActive;
             target.CreateDate = scriptt.CreateDate;
+            target.Visit = scriptt.Visit;
 
             _context.Scripts.Update(target);
             _context.SaveChanges();
