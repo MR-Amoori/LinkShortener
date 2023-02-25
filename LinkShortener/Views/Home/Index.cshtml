@@ -58,6 +58,7 @@ else
                    <th class="border">نام</th>
                    <th class="border">لینک اسکریپت</th>
                    <th class="border">تاریخ ایجاد</th>
+                   <th class="border">تاریخ انقضا</th>
                    <th class="border">وضعیت</th>
                    <th class="border">آپدیت</th>
                    <th class="border">دستورات</th>
@@ -95,6 +96,9 @@ else
                <td class="border">
                    @item.CreateDate.ToString("yyyy/MM/dd")
                </td>
+                <td class="border">
+                   @item.ExpiryDate.ToString("yyyy/MM/dd")
+                </td>
                <td class="border">
                  @if (item.IsActive)
                     {

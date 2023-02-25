@@ -31,7 +31,16 @@ namespace LinkShortener.Models
         public int Visit { get; set; }
 
         [Required]
+        [DisplayName("تاریخ ایجاد")]
         public DateTime CreateDate { get; set; }
+
+        [Required(ErrorMessage = "وارد کردن {0} اجباری است")]
+        [DisplayName("تاریخ انقضا")]
+        public DateTime ExpiryDate { get; set; }
+       
+        [Required(ErrorMessage = "وارد کردن {0} اجباری است")]
+        [DisplayName("تاریخ انقضا")]
+        public int ExpiryDateNum { get; set; }
 
         [Display(Name = "فعال باشد؟")]
         public bool IsActive { get; set; }

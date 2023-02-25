@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Diagnostics;
 using System.Linq;
 
@@ -22,6 +23,7 @@ namespace LinkShortener.Controllers
 
         public IActionResult Index()
         {
+
             ViewData["urlSite"] = HttpContext.Request.GetDisplayUrl().ToString();
             if (User.Identity.IsAuthenticated)
             {

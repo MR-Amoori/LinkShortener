@@ -26,6 +26,9 @@ namespace LinkShortener.Controllers
         [HttpPost]
         public IActionResult AddScript(Script model)
         {
+            DateTime Expry = DateTime.Now.AddDays(model.ExpiryDateNum);
+            model.ExpiryDate = Expry;
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -64,6 +67,8 @@ namespace LinkShortener.Controllers
                 script = model.script,
                 Customer = model.Customer,
                 CreateDate = DateTime.Now,
+                ExpiryDate = model.ExpiryDate,
+                ExpiryDateNum = model.ExpiryDateNum,
                 IsActive = model.IsActive,
                 Visit = 0,
                 UserId = user.UserId,
@@ -103,11 +108,15 @@ namespace LinkShortener.Controllers
                 }
             }
 
+            DateTime Expry = scriptt.CreateDate.AddDays(scriptt.ExpiryDateNum);
+            scriptt.ExpiryDate = Expry;
+
             target.Customer = scriptt.Customer;
             target.NumberPhone = scriptt.NumberPhone;
             target.script = scriptt.script;
             target.IsActive = scriptt.IsActive;
-            target.CreateDate = scriptt.CreateDate;
+            target.ExpiryDate = scriptt.ExpiryDate;
+            target.ExpiryDateNum = scriptt.ExpiryDateNum;
             target.Visit = scriptt.Visit;
 
             _context.Scripts.Update(target);
@@ -129,7 +138,7 @@ namespace LinkShortener.Controllers
             var script = _context.Scripts.Find(int.Parse(id));
             _context.Scripts.Remove(script);
             _context.SaveChanges();
-           return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
 
@@ -142,9 +151,19 @@ namespace LinkShortener.Controllers
             {
                 if (script.IsActive)
                 {
-                    _context.Scripts.FirstOrDefault(s => s.ShortLink == $"s/{id}").Visit += 1;
-                    _context.SaveChanges();
-                    return script.script;
+                    if (DateTime.Now < script.ExpiryDate)
+                    {
+                        _context.Scripts.FirstOrDefault(s => s.ShortLink == $"s/{id}").Visit += 1;
+                        _context.SaveChanges();
+                        return script.script;
+                    }
+                    else
+                    {
+                        script.IsActive = false;
+                        _context.Scripts.Update(script);
+                        _context.SaveChanges();
+                        return "vmess://ewogICAgImFkZCI6ICJOb3RGb3VuZCIsCiAgICAiYWlkIjogIjAiLAogICAgImhvc3QiOiAiIiwKICAgICJpZCI6ICI4Y2E3YWJlNS1hNjFjLTQzNDItZGM5MC05NjhiYmQ5NzE4MmEiLAogICAgIm5ldCI6ICJ3cyIsCiAgICAicGF0aCI6ICIvIiwKICAgICJwb3J0IjogIjk5OTk5IiwKICAgICJwcyI6ICLYqtin2LHbjNiuINin2YbZgti22Kcg2K3Ys9in2Kgg2LTZhdinINio2Ycg2b7Yp9uM2KfZhiDYsdiz24zYr9mHINin2LPYqi4iLAogICAgInNjeSI6ICJhdXRvIiwKICAgICJzbmkiOiAiIiwKICAgICJ0bHMiOiAidGxzIiwKICAgICJ0eXBlIjogIiIsCiAgICAidiI6ICIyIgp9Cg==";
+                    }
                 }
             }
 

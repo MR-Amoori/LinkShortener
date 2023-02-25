@@ -4,14 +4,16 @@ using LinkShortener.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LinkShortener.Migrations
 {
     [DbContext(typeof(LinkShortenerContext))]
-    partial class LinkShortenerContextModelSnapshot : ModelSnapshot
+    [Migration("20230225011816_EditScript_AddExpryDate_Mig")]
+    partial class EditScript_AddExpryDate_Mig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,10 +37,6 @@ namespace LinkShortener.Migrations
 
                     b.Property<DateTime>("ExpiryDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("ExpiryDateNum")
-                        .HasColumnType("int")
-                        .HasMaxLength(365);
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
