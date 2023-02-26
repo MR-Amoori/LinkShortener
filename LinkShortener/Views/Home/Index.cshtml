@@ -168,6 +168,7 @@ else
                    @item.Visit
                </td>
                <td class="border">
+                   <a asp-action="QR" asp-controller="UrlShortener" asp-route-id="@item.ShortLink" asp-route-customerName="@item.Link" class="btn btn-primary">QR</a> | 
                    <a asp-action="Delete" asp-controller="Link" asp-route-id="@item.LinkId" class="btn btn-danger">حذف</a>
                    <a asp-action="Update" asp-controller="Link" asp-route-id="@item.LinkId" class="btn btn-warning">ویرایش</a>
                </td>
