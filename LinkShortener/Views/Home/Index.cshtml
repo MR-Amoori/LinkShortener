@@ -26,6 +26,7 @@ else
                <span class="text-info">ایمیل: </span> @User.Identity.GetEmail()
          <br />
             <span class="text-info">شماره موبایل: </span> @User.Identity.GetMobile()
+
    </h6>
 
 
@@ -55,7 +56,7 @@ else
               <thead>
                <tr>
                    <th class="border">ردیف</th>
-                   <th class="border">نام</th>
+                   <th class="border" width="180px">نام</th>
                    <th class="border">لینک اسکریپت</th>
                    <th class="border">تاریخ ایجاد</th>
                    <th class="border">تاریخ انقضا</th>
@@ -113,7 +114,8 @@ else
                    @item.Visit
                </td>
                <td class="border">
-                   <a asp-action="DeleteScript" asp-controller="Script" asp-route-id="@item.ScriptId" class="btn btn-danger">حذف</a>
+                    <a asp-action="QR" asp-controller="Script" asp-route-id="@item.ShortLink" asp-route-customerName="@item.Customer" class="btn btn-primary">QR</a> | 
+                   <a asp-action="DeleteScript" asp-controller="Script" asp-route-id="@item.ScriptId" class="btn btn-danger">حذف</a> | 
                    <a asp-action="UpdateScript" asp-controller="Script" asp-route-id="@item.ScriptId" class="btn btn-warning">ویرایش</a>
                </td>
            </tr>
