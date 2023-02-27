@@ -16,7 +16,7 @@
     </style>
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.QrCode))
+@if (!string.IsNullOrEmpty(ViewBag.qr))
 {
 
 
@@ -24,7 +24,7 @@
         <div class="container">
             <p>عکس QR CODE سایت @ViewBag.Name</p>
         </div>
-        <img src="@ViewBag.QrCode" alt="Qr">
+        <img src="@ViewBag.qr" alt="Qr">
         <br />
         <a href="/" class="btn btn-dark m-3">بازگشت</a>
         <br />
