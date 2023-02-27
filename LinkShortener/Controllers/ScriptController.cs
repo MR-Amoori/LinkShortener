@@ -162,7 +162,8 @@ namespace LinkShortener.Controllers
                     {
                         _context.Scripts.FirstOrDefault(s => s.ShortLink == $"s/{id}").Visit += 1;
                         _context.SaveChanges();
-                        return script.script;
+                        string scriptResult = script.script + "-" + script.Customer;
+                        return scriptResult;
                     }
                     else
                     {
