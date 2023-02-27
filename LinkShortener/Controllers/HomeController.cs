@@ -29,7 +29,15 @@ namespace LinkShortener.Controllers
             {
                 var userId = _context.User.FirstOrDefault(u => u.UserName == User.Identity.Name).UserId;
                 var urls = _context.ShortUrl.Include(u => u.User).Where(u => u.UserId == userId).ToList();
-                var scripts = _context.Scripts.Include(x => x.User).Where(x => x.UserId == userId).ToList(); ;
+                var scripts = _context.Scripts.Include(x => x.User).Where(x => x.UserId == userId).ToList();
+                foreach (var item in scripts)
+                {
+                    var scr = item.script;
+                    scr = scr.Trim();
+                    item.script = scr;
+                }
+                _context.SaveChanges();
+
                 IndexViewModel viewModel = new IndexViewModel()
                 {
                     Scripts = scripts,
