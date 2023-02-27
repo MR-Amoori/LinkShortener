@@ -116,13 +116,13 @@ namespace LinkShortener.Controllers
             }
 
             DateTime Expry = scriptt.CreateDate.AddDays(scriptt.ExpiryDateNum);
-            scriptt.ExpiryDate = Expry;
+            target.ExpiryDate = Expry;
 
             target.Customer = scriptt.Customer;
             target.NumberPhone = scriptt.NumberPhone;
             target.script = scriptt.script;
             target.IsActive = scriptt.IsActive;
-            target.ExpiryDate = scriptt.ExpiryDate;
+            target.CreateDate = scriptt.CreateDate;
             target.ExpiryDateNum = scriptt.ExpiryDateNum;
             target.Visit = scriptt.Visit;
 
